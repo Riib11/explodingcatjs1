@@ -1,0 +1,25 @@
+<!DOCUMENT html>
+<html>
+	<body>
+		<h2>z</h3>
+		<canvas id="canvas-orig" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+		<br>
+		<button onclick="toggleFanciness()">toggle fanciness</button>
+		<br>
+		<br>
+		<input type="range"  min="0" max="100" value="20" onchange="changeScale(this.value)"/>
+		<h2>f(z)=cos(z)</h3>
+		<canvas id="canvas-f" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+		<h2>g(z)=sin(z)</h3>
+		<canvas id="canvas-g" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+		<h2>h(z)=1/z</h3>
+		<canvas id="canvas-h" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+		<h2>l(z)=sin(1/z)</h3>
+		<canvas id="canvas-l" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+	</body>
+	<head>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/3.8.0/math.min.js" type="text/javascript"></script>
+		<script src="https://raw.githubusercontent.com/infusion/Complex.js/master/complex.min.js"></script>
+		<script src="explodingcat.js" type="text/javascript"></script>
+	</head>
+</html>
