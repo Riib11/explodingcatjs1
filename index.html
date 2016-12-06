@@ -4,22 +4,55 @@
 		<h2>z</h3>
 		<canvas id="canvas-orig" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
 		<br>
+		<p>Use arrow keys to move cat</p>
 		<button onclick="toggleFanciness()">toggle fanciness</button>
 		<br>
 		<br>
 		<input type="range"  min="0" max="100" value="20" onchange="changeScale(this.value)"/>
-		<h2>f(z)=cos(z)</h3>
-		<canvas id="canvas-f" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
-		<h2>g(z)=sin(z)</h3>
-		<canvas id="canvas-g" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
-		<h2>h(z)=1/z</h3>
-		<canvas id="canvas-h" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
-		<h2>l(z)=sin(1/z)</h3>
-		<canvas id="canvas-l" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+		<div id='f' class="graph-right">
+			<h2>f(z)=cos(z)</h3>
+			<canvas id="canvas-f" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+		</div>
+		<div id='g' class="graph-right">
+			<h2>g(z)=sin(z)</h3>
+			<canvas id="canvas-g" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+		</div>
+		<div id='h' class="graph-right">
+			<h2>h(z)=1/z</h3>
+			<canvas id="canvas-h" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+		</div>
+		<div id="l" class="graph-right">
+			<h2>l(z)=sin(1/z)</h3>
+			<canvas id="canvas-l" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+		</div>
+		<div id="buttons">
+			<button onclick="showGraph(0)">cos(z)</button>
+			<button onclick="showGraph(1)">sin(z)</button>
+			<button onclick="showGraph(2)">1/z</button>
+			<button onclick="showGraph(3)">1/sin(z)</button>
+		</div>
+
+		<script type="text/javascript">
+			document.getElementById('f').style.display = 'block';
+		</script>
 	</body>
 	<head>
-		<script src="https://raw.githubusercontent.com/Riib11/explodingcatjs1/master/math.js" type="text/javascript"></script>
+		<style type="text/css">
+			.graph-right {
+				display: none;
+				position: absolute;
+				left: 600px;
+				top: 0px;
+			}
+
+			#buttons {
+				position: absolute;
+				top: 600px;
+				left: 740px;
+			}
+		</style>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/3.8.0/math.min.js" type="text/javascript"></script>
 		<script src="https://raw.githubusercontent.com/infusion/Complex.js/master/complex.min.js"></script>
-		<script src="https://raw.githubusercontent.com/Riib11/explodingcatjs1/master/explodingcat.js" type="text/javascript"></script>
+		<script src="explodingcat.js" type="text/javascript"></script>
 	</head>
 </html>
