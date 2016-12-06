@@ -104,6 +104,13 @@ var graphs = [
 	document.getElementById("canvas-l"),
 ]
 
+var graphdivs = [
+	document.getElementById("f"),
+	document.getElementById("g"),
+	document.getElementById("h"),
+	document.getElementById("l"),
+]
+
 var ctxs = new Array(graphs.length);
 
 function initGraphs() {
@@ -152,6 +159,16 @@ function changeScale(x) {
 	drawGraphs();
 }
 
+function showGraph(x) {
+	for(var i = 0; i < graphdivs.length; i++) {
+		if(i==x) {
+			graphdivs[i].style.display = 'block';
+		} else {
+			graphdivs[i].style.display = 'none';
+		}
+	}
+}
+
 document.onkeydown = function(evt) {
     evt = evt || window.event;
 	
@@ -185,7 +202,7 @@ function drawGraphs() {
     	ctxs[x].fillRect(0,center,height,1);
 		ctxs[x].fillRect(center,0,1,height);
     }
-    
+
 	var length = inputs.length;
 	if(!fanciness) {
 		length = interindcount;
