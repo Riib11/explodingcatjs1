@@ -7,26 +7,26 @@ function generateInputs() {
 	var angle;
 	var x;
 	var indcount=0;
-	for(var k = 0; k < 36*2; k += 1) {
-		angle = math.unit(k*5,'deg');
+	for(var k = 0; k < 360; k += 1) {
+		angle = math.unit(k,'deg');
 		inputs[indcount] = new Complex(radius*math.cos(angle), radius*math.sin(angle));
 		indcount++;
 	}
 
-	for(var k = 0; k < 36; k += 1) {
-		angle = math.unit(k*10,'deg');
+	for(var k = 0; k < 36*2; k += 1) {
+		angle = math.unit(k*5,'deg');
 		inputs[indcount] = new Complex(radius/8*math.cos(angle)-radius/3, radius/5*math.sin(angle)-radius/7);
 		indcount++;
 	}
 
-	for(var k = 0; k < 36; k += 1) {
-		angle = math.unit(k*10,'deg');
+	for(var k = 0; k < 360; k += 1) {
+		angle = math.unit(k,'deg');
 		inputs[indcount] = new Complex(radius/8*math.cos(angle)+radius/3, radius/5*math.sin(angle)-radius/7);
 		indcount++;
 	}
 
-	for(var k = 0; k < 36; k += 1) {
-		angle = math.unit(k*10, 'deg');
+	for(var k = 0; k < 360; k += 1) {
+		angle = math.unit(k, 'deg');
 		inputs[indcount] = new Complex(radius/8*math.cos(angle), radius/8*math.sin(angle)+radius/4);
 		indcount++;
 	}
@@ -34,57 +34,57 @@ function generateInputs() {
 	interindcount = indcount;
 
 	// wisker right top
-	for(var k = 0; k<13;k += 1) {
-		x = k/5;
+	for(var k = 0; k<23;k += .1) {
+		x = k/10;
 		inputs[indcount] = new Complex(x+1.5,x/3+1);
 		indcount++;
 	}
 
 	// wisker right bottom
-	for(var k = 0; k<12;k += 1) {
-		x = k/5;
+	for(var k = 0; k<24;k += .1) {
+		x = k/10;
 		inputs[indcount] = new Complex(x+1,x/2+1.4);
 		indcount++;
 	}
 
 	// wisker left top
-	for(var k = 0; k<13;k += 1) {
-		x = k/5;
+	for(var k = 0; k<26;k += .1) {
+		x = k/10;
 		inputs[indcount] = new Complex(-x-1.5,x/3+1);
 		indcount++;
 	}
 
 	// wisker left bottom
-	for(var k = 0; k<12;k += 1) {
-		x = k/5;
+	for(var k = 0; k<24;k += .1) {
+		x = k/10;
 		inputs[indcount] = new Complex(-x-1,x/2+1.4);
 		indcount++;
 	}
 
 	//right ear bottom
-	for(var k = 0; k<7;k += 1) {
-		x = k/30;
-		inputs[indcount] = new Complex(x+2.3,-10*x-2.3);
+	for(var k = 0; k<28;k += .1) {
+		x = k/120;
+		inputs[indcount] = new Complex(x+2.3,-10*x-2.1);
 		indcount++;
 	}
 
 	// right ear top
-	for(var k = 0; k<9;k += 1) {
-		x = k/5;
+	for(var k = 0; k<18;k += .1) {
+		x = k/10;
 		inputs[indcount] = new Complex(x+1,-1*x-2.9);
 		indcount++;
 	}
 
-	//right ear bottom
-	for(var k = 0; k<7;k += 1) {
-		x = k/30;
-		inputs[indcount] = new Complex(-x-2.3,-10*x-2.3);
+	//left ear bottom
+	for(var k = 0; k<28;k += .1) {
+		x = k/120;
+		inputs[indcount] = new Complex(-x-2.3,-10*x-2.1);
 		indcount++;
 	}
 
 	// left ear top
-	for(var k = 0; k<9;k += 1) {
-		x = k/5;
+	for(var k = 0; k<18;k += .1) {
+		x = k/10;
 		inputs[indcount] = new Complex(-x-1,-1*x-2.9);
 		indcount++;
 	}
@@ -102,6 +102,8 @@ var graphs = [
 	document.getElementById("canvas-g"),
 	document.getElementById("canvas-h"),
 	document.getElementById("canvas-l"),
+	document.getElementById("canvas-q"),
+	document.getElementById("canvas-w"),
 ]
 
 var graphdivs = [
@@ -109,6 +111,8 @@ var graphdivs = [
 	document.getElementById("g"),
 	document.getElementById("h"),
 	document.getElementById("l"),
+	document.getElementById("q"),
+	document.getElementById("w"),
 ]
 
 var ctxs = new Array(graphs.length);
@@ -147,6 +151,15 @@ function h(z) {
 function l(z) {
 	z = z.inverse()
 	return z.sin();
+}
+
+function q(z) {
+	return z.mul(z);
+}
+
+function w(z) {
+	var e = new Complex(math.e,0)
+	return e.pow(z);
 }
 
 function toggleFanciness() {
@@ -213,6 +226,8 @@ function drawGraphs() {
 		drawPoint(2,g(inputs[j]));
 		drawPoint(3,h(inputs[j]));
 		drawPoint(4,l(inputs[j]));
+		drawPoint(5,q(inputs[j]));
+		drawPoint(6,w(inputs[j]));
 	}
 }
 
